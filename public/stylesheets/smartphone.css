@@ -3,3 +3,7 @@ body { background: #333;}
 .no-narrow { display: none; }
 body { font-size: xx-large;}
 footer, input { font-size: large;}
+.img-circle { border-radius: 50%; width: 25%;
+             margin-top: 10%; margin-left: 38%;}
+.caption { text-align: center;}
+table { table-layout: fixed;}

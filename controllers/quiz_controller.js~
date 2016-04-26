@@ -14,6 +14,6 @@ exports.check = function (req, res, next) {
 };
 
 //GET /author
-//exports.author = function (req, res, next) {
-  // res.render('author', {title:'Autores del Quiz'});
-//};
+exports.author = function (req, res, next) {
+   res.render('quizzes/author', {author: author});
+};
