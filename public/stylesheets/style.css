@@ -10,3 +10,7 @@ nav { text-align: center;}
 section { text-align: left;}
 footer { text-align: center;}
 nav a { margin: 0px 10px 0px 0px;} 
+.img-circle { border-radius: 50%; width: 25%;
+             margin-top: 10%; margin-left: 38%;}
+.caption { text-align: center;}
+table { table-layout: fixed;}

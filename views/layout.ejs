@@ -18,16 +18,34 @@
         <h2>Quiz<span class="no-narrow">: 
 	    el juego de las preguntas</span>
         </h2>
+        <form method="get" action="/quizzes">
+            <input type="text" id="search" name="search" placeholder="Buscar una pregunta" />
+            <input type="hidden" id="hide" name="hide" value="1">
+            <input type="submit" alt="Buscar" value="Buscar" />
+          </form>
      </header>
 
      <nav class="main" role="navigation">
         <a href="/">Inicio</a>
-        <a href="/question">Preguntas</a>
+        <a href="/quizzes">Preguntas</a>
         <a href="/author">Créditos</a>
      </nav>
 
      <section class="main">
-        <div><%- body %></div>
+         <div><%- body %></div>
+        <div>
+          <table>
+             <tr>
+                <td>
+                  <a href="/quizzes/1">Capital de Italia</a>
+                </td>
+             </tr>
+             <tr>
+                <td>
+                  <a href="/quizzes/2">Capital de Portugal</a>
+                </td>
+             </tr>
+
      </section>
 
      <footer class="main">

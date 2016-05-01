@@ -6,13 +6,8 @@
     "start": "node ./bin/www"
   },
   "engines": {
-<<<<<<< HEAD
     "node": "4.2.x",
     "npm": "2.14.x"
-=======
-     "node": "4.2.x",
-     "npm": "2.14.x"
->>>>>>> 4d789cf7317527bdb65338a30681eba68a2e12f9
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -22,8 +17,12 @@
     "express": "~4.13.1",
     "express-partials": "^0.3.0",
     "morgan": "~1.6.1",
+    "pg": "^4.4.6",
+    "pg-hstore": "^2.3.2",
     "sequelize": "^3.19.3",
-    "serve-favicon": "~2.3.0",
+    "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
     "sqlite3": "^3.1.1"
   }
 }
