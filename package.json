@@ -24,8 +24,9 @@
     "morgan": "~1.6.1",
     "pg": "^4.4.6",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^3.19.3",
-    "serve-favicon": "~2.3.0"
+    "sequelize": "^3.22.0",
+    "serve-favicon": "~2.3.0",
+    "sqlite3": "^3.1.1"
   },
   "devDependencies": {
     "sqlite3": "^3.1.1"
