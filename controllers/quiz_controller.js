@@ -95,6 +95,9 @@ exports.create = function(req, res, next) {
     })
     .catch(function(error) {
 		req.flash('error', 'Error al crear un Quiz: '+error.message);
+    	res.redirect('/quizzes');  // res.redirect: Redirección HTTP a lista de preguntas
+    })
+    .catch(function(error) {
 		next(error);
 	});  
 };
