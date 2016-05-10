@@ -75,7 +75,7 @@ exports.check = function(req, res) {
 		});	
 };
 
-// GET /quizzes/new
+//GET /quizzes/new
 
 exports.new = function(req, res, next) {
   var quiz = models.Quiz.build({question: "", answer: ""});
