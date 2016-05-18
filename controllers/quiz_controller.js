@@ -39,13 +39,13 @@ exports.index = function(req, res) {
     if(req.query.search===undefined){
         models.Quiz.findAll({where:["question like ?", "%"+req.query.search.replace(/\s/g,"%")+"%"], order: 'question ASC'})
           .then(function(quizzes){
-            res.json('quizzes/index.ejs', { quizzes: quizzes});
+            res.json({ quizzes: quizzes});
           }).catch(function(error){ next(error)});
     }
     else{
       models.Quiz.findAll()({attributes: ['id', 'question', 'answer']})
       .then(function(quizzes){
-        res.json('quizzes/index.ejs', { quizzes: quizzes});
+        res.json({ quizzes: quizzes});
       })
       .catch(function(error){
           next(error);
