@@ -51,3 +51,10 @@ exports.destroy = function(req, res, next) {
     
     res.redirect("/session"); // redirect a login
 };
+
+exports.autologout = function(req, res, next){
+    if (req.session.user && ((req.session.user.tf - req.session.user.ti) > 120000)) {
+        req.flash('error', "Ha expirado la sesión");
+        res.redirect("/session"); 
+}
+};

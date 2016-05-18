@@ -11,6 +11,8 @@ var methodOverride = require('method-override');
 var routes = require('./routes/index');
 
 var app = express();
+var ti;
+var tf;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,7 +34,49 @@ app.use(session({secret: "Quiz 2016",
 app.use(methodOverride('_method', {methods: ["POST", "GET"]}));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Helper dinamico:
+// Helpers dinamicos
+
+app.use(function(req, res, next) {
+  if (!req.path.match(/\/login|\/logout/)) {
+    req.session.redir = req.path;
+  }
+  else {
+    if (req.session.user && !req.path.match(/\/logout/)) {
+      tf = new Date();
+      tf = tf.getSeconds() + tf.getMinutes()*60 + tf.getHours()*3600;
+      ti = 0;
+    }
+  }
+  res.locals.session = req.session;
+  next();
+});
+
+app.use(function(req, res, next) {
+    switch(ti) {
+        case 0:
+         ti = new Date();
+         ti = ti.getSeconds() + ti.getMinutes()*60 + ti.getHours()*3600;
+         break;
+        default:
+      tf = new Date();
+      tf = tf.getSeconds() + tf.getMinutes()*60 + tf.getHours()*3600;
+          break;
+  }
+
+  if (req.session.user && (tf - ti) > 120) {
+    req.flash('error', "ha expirado la sesión");
+    req.session.destroy();
+    res.redirect("/session");
+  }
+
+  ti = new Date();
+  ti = ti.getSeconds() + ti.getMinutes()*60 + ti.getHours()*3600;
+
+  next();
+});
+
+
+
 app.use(function(req, res, next) {
 
    // Hacer visible req.session en las vistas
