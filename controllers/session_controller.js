@@ -29,7 +29,7 @@ exports.loginRequired = function (req, res, next) {
 exports.new = function(req, res, next) {
     var redir = req.query.redir || url.parse(req.headers.referer || "/").pathname;
     if (redir === '/session' || redir === '/users/new') {redir = "/"; }
-    res.render('session/new', {redir: redir});
+    res.render('session/new', { redir: req.query.redir || '/' });
 };
 
 
