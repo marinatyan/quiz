@@ -3,6 +3,7 @@ var url = require('url');
 var models = require('../models');
 var Sequelize = require('sequelize');
 
+
 var authenticate = function(login, password){
     return models.User.findOne({where: {username: login}})
     .then(function(user){
@@ -13,6 +14,16 @@ var authenticate = function(login, password){
     }
           });
 };
+
+// Middleware: Se requiere hacer login.
+exports.loginRequired = function (req, res, next) {
+    if (req.session.user) {
+        next();
+    } else {
+        res.redirect('/session?redir=' + (req.param('redir') || req.url));
+    }
+};
+
 
 // GET /session   -- Formulario de login
 exports.new = function(req, res, next) {
