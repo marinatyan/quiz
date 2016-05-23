@@ -18,6 +18,20 @@ exports.load = function(req, res, next, quizId) {
         .catch(function(error) { next(error); });
 };
 
+exports.ownershipRequired = function(req, res, next){
+
+    var isAdmin      = req.session.user.isAdmin;
+    var quizAuthorId = req.quiz.AuthorId;
+    var loggedUserId = req.session.user.id;
+
+    if (isAdmin || quizAuthorId === loggedUserId) {
+        next();
+    } else {
+      console.log('Operación prohibida: El usuario logeado no es el autor del quiz, ni un administrador.');
+      res.send(403);
+    }
+};
+
 
 
 exports.index = function(req, res) {

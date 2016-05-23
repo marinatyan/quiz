@@ -21,12 +21,17 @@
 <p><strong>Comentarios:</strong></p>
 
 <ul>
-<% for (var i in quiz.Comment) { %>
-    var comment = quiz.Comment[i];
+<% for (var i in quiz.Comments) { %>
+
+<%   var comment = quiz.Comments[i]; %>
+    
     <%   if (comment.accepted) { %>
            <li> <%= comment.text %> </li>
-       <% } else if (session.user) { %>
+    
+       <% } else if (session.user && 
+                     (session.user.isAdmin || (quiz.AuthorId === session.user.id))) { %>
            <li> <%= comment.text %> </li>
+    
            <a href="/quizzes/<%= quiz.id %>/comments/<%= comment.id %>/accept?_method=PUT">
               <button>Aceptar</button>
            </a>
